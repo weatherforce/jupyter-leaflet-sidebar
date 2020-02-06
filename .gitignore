@@ -6,6 +6,7 @@ build/
 node_modules/
 yarn.lock
 .ropeproject/
+package-lock.json
 
 # Compiled javascript
 jupyter_leaflet_sidebar/static/
