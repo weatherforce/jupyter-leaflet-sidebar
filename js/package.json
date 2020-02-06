@@ -36,10 +36,10 @@
   },
   "dependencies": {
     "@jupyter-widgets/base": "^1.1 || ^2",
-    "jupyter-leaflet": "^0.12.2",
+    "jupyter-leaflet": "0.8.1",
     "leaflet": "^1.6.0",
-    "lodash": "^4.17.4",
-    "sidebar-v2": "^0.4.0"
+    "leaflet-sidebar-v2": "^3.2.2",
+    "lodash": "^4.17.4"
   },
   "jupyterlab": {
     "extension": "lib/labplugin"

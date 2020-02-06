@@ -2,6 +2,7 @@ var widgets = require('@jupyter-widgets/base');
 var ipyleaflet = require('jupyter-leaflet')
 var _ = require('lodash');
 var L = require('leaflet');
+var sidebar = require("leaflet-sidebar-v2");
 
 // See example.py for the kernel counterpart to this file.
 
@@ -22,7 +23,8 @@ var L = require('leaflet');
 // When serialiazing the entire widget state for embedding, only values that
 // differ from the defaults will be specified.
 var SidebarModel = widgets.DOMWidgetModel.extend({
-    defaults: _.extend(widgets.DOMWidgetModel.prototype.defaults(), {
+//var SidebarModel = ipyleaflet.LeafletControlModel.extend({
+	    defaults: _.extend(widgets.DOMWidgetModel.prototype.defaults(), {
         _model_name : 'SidebarModel',
         _view_name : 'SidebarView',
         _model_module : 'jupyter-leaflet-sidebar',
@@ -36,8 +38,13 @@ var SidebarModel = widgets.DOMWidgetModel.extend({
 
 
 // Custom View. Renders the widget model.
-var SidebarView = widgets.DOMWidgetView.extend({
+//var SidebarView = widgets.DOMWidgetView.extend({
+var SidebarView = ipyleaflet.LeafletControlView.extend({
     // Defines how the widget gets rendered into the DOM
+	initialize: function(parameters){
+		SidebarView.__super__.initialize.apply(this, arguments);
+		this.map_view = this.options.map_view
+	},
     render: function() {
         this.value_changed();
 		this.config_changed();
@@ -52,7 +59,13 @@ var SidebarView = widgets.DOMWidgetView.extend({
     },
 
 	config_changed: function(){
-		console.log(this.model.get('config'))
+		console.log(L.Control)
+		if(this.obj){
+			this.obj.remove()
+		}
+		var config = this.model.get('config')
+		this.obj = L.control.sidebar(config);
+		this.obj.addTo(this.map_view.obj);
 	}
 });
 
