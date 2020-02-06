@@ -29,7 +29,8 @@ var SidebarModel = widgets.DOMWidgetModel.extend({
         _view_module : 'jupyter-leaflet-sidebar',
         _model_module_version : '0.1.0',
         _view_module_version : '0.1.0',
-        value : 'Sidebar World!'
+        value : 'Sidebar World!',
+		config: {},
     })
 });
 
@@ -39,15 +40,20 @@ var SidebarView = widgets.DOMWidgetView.extend({
     // Defines how the widget gets rendered into the DOM
     render: function() {
         this.value_changed();
-
+		this.config_changed();
         // Observe changes in the value traitlet in Python, and define
         // a custom callback.
         this.model.on('change:value', this.value_changed, this);
+        this.model.on('change:config', this.config_changed, this);
     },
 
     value_changed: function() {
         this.el.textContent = this.model.get('value');
-    }
+    },
+
+	config_changed: function(){
+		console.log(this.model.get('config'))
+	}
 });
 
 
