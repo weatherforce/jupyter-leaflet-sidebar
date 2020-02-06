@@ -1,0 +1,12 @@
+*.egg-info/
+.ipynb_checkpoints/
+dist/
+build/
+*.py[cod]
+node_modules/
+
+# Compiled javascript
+jupyter_leaflet_sidebar/static/
+
+# OS X
+.DS_Store

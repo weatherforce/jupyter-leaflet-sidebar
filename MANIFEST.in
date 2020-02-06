@@ -1,0 +1,2 @@
+recursive-include jupyter_leaflet_sidebar/static *.*
+include jupyter-leaflet-sidebar.json
