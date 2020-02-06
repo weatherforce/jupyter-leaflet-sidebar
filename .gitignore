@@ -5,6 +5,7 @@ build/
 *.py[cod]
 node_modules/
 yarn.lock
+.ropeproject/
 
 # Compiled javascript
 jupyter_leaflet_sidebar/static/
