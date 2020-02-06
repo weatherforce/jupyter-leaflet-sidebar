@@ -1,5 +1,7 @@
 var widgets = require('@jupyter-widgets/base');
+var ipyleaflet = require('jupyter-leaflet')
 var _ = require('lodash');
+var L = require('leaflet');
 
 // See example.py for the kernel counterpart to this file.
 
