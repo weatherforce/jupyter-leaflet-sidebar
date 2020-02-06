@@ -19,21 +19,21 @@ var _ = require('lodash');
 
 // When serialiazing the entire widget state for embedding, only values that
 // differ from the defaults will be specified.
-var HelloModel = widgets.DOMWidgetModel.extend({
+var SidebarModel = widgets.DOMWidgetModel.extend({
     defaults: _.extend(widgets.DOMWidgetModel.prototype.defaults(), {
-        _model_name : 'HelloModel',
-        _view_name : 'HelloView',
+        _model_name : 'SidebarModel',
+        _view_name : 'SidebarView',
         _model_module : 'jupyter-leaflet-sidebar',
         _view_module : 'jupyter-leaflet-sidebar',
         _model_module_version : '0.1.0',
         _view_module_version : '0.1.0',
-        value : 'Hello World!'
+        value : 'Sidebar World!'
     })
 });
 
 
 // Custom View. Renders the widget model.
-var HelloView = widgets.DOMWidgetView.extend({
+var SidebarView = widgets.DOMWidgetView.extend({
     // Defines how the widget gets rendered into the DOM
     render: function() {
         this.value_changed();
@@ -50,6 +50,6 @@ var HelloView = widgets.DOMWidgetView.extend({
 
 
 module.exports = {
-    HelloModel: HelloModel,
-    HelloView: HelloView
+    SidebarModel: SidebarModel,
+    SidebarView: SidebarView
 };
