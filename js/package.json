@@ -35,6 +35,7 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.1",
     "@jupyter-widgets/base": "^1.1 || ^2",
     "jupyter-leaflet": "0.8.1",
     "leaflet": "^1.6.0",

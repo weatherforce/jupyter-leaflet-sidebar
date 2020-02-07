@@ -3,6 +3,8 @@ var ipyleaflet = require('jupyter-leaflet')
 var _ = require('lodash');
 var L = require('leaflet');
 var sidebar = require("leaflet-sidebar-v2");
+require("@fortawesome/fontawesome-free");
+require('../node_modules/leaflet-sidebar-v2/css/leaflet-sidebar.min.css')
 
 // See example.py for the kernel counterpart to this file.
 
@@ -36,6 +38,13 @@ var SidebarModel = widgets.DOMWidgetModel.extend({
     })
 });
 
+var panelContent = {
+    id: 'userinfo',                     // UID, used to access the panel
+    tab: '<i class="fa fa-gear"></i>',  // content can be passed as HTML string,
+    pane:'<p> Dééééééééédé </p>',        // DOM elements can be passed, too
+    title: 'Your Profile',              // an optional pane header
+    //position: 'bottom'                  // optional vertical alignment, defaults to 'top'
+};	
 
 // Custom View. Renders the widget model.
 //var SidebarView = widgets.DOMWidgetView.extend({
@@ -48,6 +57,7 @@ var SidebarView = ipyleaflet.LeafletControlView.extend({
     render: function() {
         this.value_changed();
 		this.config_changed();
+		this.obj.addPanel(panelContent);
         // Observe changes in the value traitlet in Python, and define
         // a custom callback.
         this.model.on('change:value', this.value_changed, this);
@@ -65,7 +75,7 @@ var SidebarView = ipyleaflet.LeafletControlView.extend({
 		}
 		var config = this.model.get('config')
 		this.obj = L.control.sidebar(config);
-		this.obj.addTo(this.map_view.obj);
+		this.obj.addTo(this.map_view.obj).open('userinfo');
 	}
 });
 
